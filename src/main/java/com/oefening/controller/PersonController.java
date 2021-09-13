@@ -3,7 +3,11 @@ package com.oefening.controller;
 import com.oefening.models.Person;
 import com.oefening.service.PersonService;
 import io.swagger.annotations.Api;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @Api(value = "Person")
 @RestController
@@ -16,20 +20,17 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/find/{name}")
     public Person getPerson(@PathVariable String name){
         System.out.println("Trying to register person with name" + name);
-
-        Person person = personService.getPerson(name);
-
-        System.out.println(person.getName());
-
         return personService.getPerson(name);
     }
 
     @PostMapping("/register")
-    public void registerPerson(@RequestBody Person person){
+    public ResponseEntity<String> registerPerson(@Valid @RequestBody Person person){
         System.out.println("Trying to register person with name" + person.getName());
          personService.registerPerson(person);
+
+         return ResponseEntity.ok("Person is valid");
     }
 }
