@@ -12,7 +12,7 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 @Endpoint
 public class PersonEndpoint {
 
-    private static final String NAMESPACE_URI = "http://www.baeldung.com/springsoap/gen";
+    private static final String NAMESPACE_URI = "http://www.maxtest.com/springsoap";
 
     private PersonSOAPRepository soapRepository;
 
@@ -21,6 +21,16 @@ public class PersonEndpoint {
         this.soapRepository = personSOAPRepository;
     }
 
+    /**
+     * This method returns a person with the SOAP Protocol
+     * the response will give a person with the
+     * name, age and email attributes
+     *
+     * @return
+     *     possible object is
+     *     {@link GetPersonResponse }
+     *
+     */
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getPersonRequest")
     @ResponsePayload
     public GetPersonResponse getPerson(@RequestPayload GetPersonRequest request) {
@@ -29,5 +39,4 @@ public class PersonEndpoint {
 
         return response;
     }
-
 }

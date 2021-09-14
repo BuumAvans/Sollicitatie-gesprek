@@ -1,5 +1,5 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:gs="http://www.baeldung.com/springsoap/gen">
+                  xmlns:gs="http://www.maxtest.com/springsoap">
     <soapenv:Header/>
     <soapenv:Body>
         <gs:getPersonRequest>

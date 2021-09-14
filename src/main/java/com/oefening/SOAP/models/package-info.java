@@ -5,5 +5,5 @@
 // Generated on: 2021.09.13 at 07:36:47 PM CEST 
 //
 
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.baeldung.com/springsoap/gen", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.maxtest.com/springsoap", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 package com.oefening.SOAP.models;

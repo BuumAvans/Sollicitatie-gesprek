@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Api(value = "Person")
 @RestController
@@ -20,17 +19,34 @@ public class PersonController {
         this.personService = personService;
     }
 
+    /**
+     * This method returns a person when the correct name has
+     * been given. The name needs to be given in the Path Variable as
+     * a String.
+     *
+     * @return
+     *     possible object is
+     *     {@link Person }
+     *
+     */
     @GetMapping("/find/{name}")
     public Person getPerson(@PathVariable String name){
-        System.out.println("Trying to register person with name" + name);
         return personService.getPerson(name);
     }
 
+    /**
+     * This method registers a given Person into the database
+     *
+     *
+     *
+     * @return
+     *     possible object is
+     *     {@link Person }
+     *
+     */
     @PostMapping("/register")
     public ResponseEntity<String> registerPerson(@Valid @RequestBody Person person){
-        System.out.println("Trying to register person with name" + person.getName());
          personService.registerPerson(person);
-
          return ResponseEntity.ok("Person is valid");
     }
 }
