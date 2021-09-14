@@ -8,5 +8,11 @@ services:
     environment:
       POSTGRES_PASSWORD: 12345
       POSTGRES_DB: Oefening
+    volumes:
+    - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+
 
 
