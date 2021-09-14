@@ -2,6 +2,7 @@ package com.oefening.service;
 
 import com.oefening.models.Person;
 import com.oefening.repository.PersonRepository;
+import exceptions.EmailAlreadyExistsException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,6 +34,17 @@ public class PersonService {
      * This method saves a person into the database
      */
     public void registerPerson(Person person){
+        if (personRepository.existsByEmail(person.getEmail())){
+            throw new EmailAlreadyExistsException(person.getEmail());
+        }
         personRepository.save(person);
+    }
+
+    /**
+     * This method deletes a person object from the database
+     */
+    public void deletePerson(Long id){
+        Person person = personRepository.findPersonById(id);
+        personRepository.delete(person);
     }
 }

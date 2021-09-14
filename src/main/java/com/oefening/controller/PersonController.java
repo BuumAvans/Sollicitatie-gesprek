@@ -49,4 +49,12 @@ public class PersonController {
          personService.registerPerson(person);
          return ResponseEntity.ok("Person is valid");
     }
+
+    /**
+     * This method deletes a person from the database
+     */
+    @DeleteMapping("/{id}")
+    public void deletePerson(@PathVariable Long id){
+        personService.deletePerson(id);
+    }
 }
